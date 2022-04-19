@@ -1,0 +1,23 @@
+{
+  "name": "share-a-meal",
+  "version": "0.0.1",
+  "description": "Programmeren 4 SAM Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/JonahEikenhorst/share-a-meal.git"
+  },
+  "author": "Jonah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/JonahEikenhorst/share-a-meal/issues"
+  },
+  "homepage": "https://gitlab.com/JonahEikenhorst/share-a-meal#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
