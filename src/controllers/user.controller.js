@@ -12,13 +12,18 @@ let controller = {
             assert(typeof password == 'string', 'Password must be a string')
             next();
         }
-        catch (error) {
-            console.log(error.code);
-            console.log(error.message);
+        catch (err) {
+            const error = {
+                status: 400,
+                result: err.message,
+            };
+            console.log(err.code);
+            console.log(err.message);
             res.status(400).json({
                 status:400,
-                result: error.toString(),
+                result: err.toString(),
             });
+            next(error);
         }
 
 
@@ -56,7 +61,7 @@ let controller = {
         });
     },
 
-    getUserById: (req, res) => {
+    getUserById: (req, res, next) => {
         const userId = req.params.userId
         let user = database.filter((item) => item.id == userId);
         if (user.length > 0) {
@@ -67,14 +72,15 @@ let controller = {
             })
         }
         else {
-            res.status(404).json({
+            const error = {
                 status: 404,
                 result: `User with ID ${userId} not found`,
-            });
+            };
+            next(error);
         }
     },
 
-    deleteUser: (req, res) => {
+    deleteUser: (req, res, next) => {
         const userId = Number(req.params.userId)
         //check if id is in database
         let user = database.filter((item) => item.id == userId);
@@ -95,14 +101,15 @@ let controller = {
                 result: `User with ID ${userId} has been deleted.`,
             })
         } else {
-            res.status(404).json({
+            const error = {
                 status: 404,
                 result: `User with ID ${userId} not found.`,
-            });
+            };
+            next(error);
         }
     },
 
-    editUser: (req, res) => {
+    editUser: (req, res, next) => {
         const id = Number(req.params.userId)
         let email = req.body.Email;
         let user = database.filter((item) => item.id == id);
@@ -136,10 +143,11 @@ let controller = {
                 })
             }
         } else {
-            res.status(404).json({
+            const error = {
                 status: 404,
                 result: `User with ID ${id} not found.`,
-            });
+            }
+            next(error);
         }
     }
 };

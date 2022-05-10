@@ -22,6 +22,12 @@ app.all("*", (req, res) => {
     result: "End-point not found",
   })
 })
+
+//Error handler
+app.use((err, req, res, next) => {
+  res.status(err.status).json(err);
+});
+
 app.listen(port, () => {
   console.log(`Meal app listening on port ${port}`)
 });
