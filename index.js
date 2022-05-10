@@ -13,7 +13,7 @@ app.all('*', (req, res, next) => {
   next();
 });
 
-app.use(userRouter);
+app.use('/api', userRouter);
 // -----------------------------------------------------------
 //Cant find location
 app.all("*", (req, res) => {
@@ -31,3 +31,5 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
   console.log(`Meal app listening on port ${port}`)
 });
+
+module.exports = app;

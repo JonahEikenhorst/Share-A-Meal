@@ -19,10 +19,6 @@ let controller = {
             };
             console.log(err.code);
             console.log(err.message);
-            res.status(400).json({
-                status:400,
-                result: err.toString(),
-            });
             next(error);
         }
 
