@@ -4,7 +4,7 @@ const userController = require('../controllers/user.contrller')
 
 
 
-router.post('/api/user', userController.addUser);
+router.post('/api/user', userController.validateUser, userController.addUser);
 
 
 router.get('/api/user', userController.getUsers);

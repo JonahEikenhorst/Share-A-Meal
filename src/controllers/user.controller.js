@@ -1,9 +1,30 @@
+const { AssertionError } = require('assert');
+const assert = require('assert');
 let database = [];
 let id = 0;
 let controller = {
+    validateUser: (req, res, next) => {
+        let user = req.body;
+        let { emailAdress, password} = user;
+
+        try {
+            assert(typeof emailAdress == 'string', 'Email Adress must be a string')
+            assert(typeof password == 'string', 'Password must be a string')
+        }
+        catch (error) {
+            console.log(error)
+            res.status(400).json({
+                status:400,
+                result: error.toString(),
+            });
+        }
+        next();
+
+
+    },
     addUser: (req, res) => {
-        let email = req.body.emailAddress;
-        if (database.filter((item) => item.emailAddress == email).length > 0) {
+        let email = req.body.emailAdress;
+        if (database.filter((item) => item.emailAdress == email).length > 0) {
             res.status(400).json({
                 Status: 400,
                 Message: `An user with this Email adress already exists!`
