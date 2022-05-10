@@ -10,15 +10,17 @@ let controller = {
         try {
             assert(typeof emailAdress == 'string', 'Email Adress must be a string')
             assert(typeof password == 'string', 'Password must be a string')
+            next();
         }
         catch (error) {
-            console.log(error)
+            console.log(error.code);
+            console.log(error.message);
             res.status(400).json({
                 status:400,
                 result: error.toString(),
             });
         }
-        next();
+
 
 
     },
