@@ -49,5 +49,5 @@ jobs:
             - uses: akhileshns/heroku-deploy@v3.12.12
               with:
                   heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-                  heroku_app_name: shareameal-prog4
+                  heroku_app_name: share-a-meal-2191148
                   heroku_email: ${{secrets.HEROKU_USER_EMAIL}}
