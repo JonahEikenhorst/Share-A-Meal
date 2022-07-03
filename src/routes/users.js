@@ -1,30 +1,25 @@
 var express = require('express');
 var router = express.Router();
 const userController = require('../controllers/user.controller')
+const authController = require('../controllers/auth.controller')
 
 
-
+//Create a user
 router.post('/user', userController.validateUser, userController.addUser);
 
+//get all users
+router.get('/user', authController.validateToken, userController.getUsers);
 
-router.get('/user', userController.getUsers);
+//get profile
+router.get('/user/profile', authController.validateToken, userController.getUserProfile);
 
-router.get('/user/profile', (req, res) => {
-  res.status(401).json({
-    status: 401,
-    result: "End-Point is not yet realised",
+//Get a specific user
+router.get('/user/:userId', authController.validateToken, userController.getUserById);
 
-  })
-})
+//delete a user
+router.delete('/user/:userId', authController.validateToken, userController.deleteUser);
 
-router.get('/user/:userId', userController.getUserById);
-
-router.delete('/user/:userId', userController.deleteUser);
-
-router.put('/user/:userId', userController.editUser);
-/* GET users listing. */
-// router.get('/', function(req, res, next) {
-//   res.send('respond with a resource');
-// });
+//edit a user
+router.put('/user/:userId', authController.validateToken, userController.validateUser, userController.editUser);
 
 module.exports = router;
