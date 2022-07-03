@@ -33,6 +33,7 @@ app.use((err, req, res, next) => {
   res.status(err.status).json(err);
 });
 
+//Auto listen message
 app.listen(port, () => {
   console.log(`Meal app listening on port ${port}`)
 });
