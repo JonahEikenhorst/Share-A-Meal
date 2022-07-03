@@ -9,7 +9,7 @@ const BodyParser = require('body-parser');
 
 app.use(BodyParser.json());
 
-
+//general methods call
 app.all('*', (req, res, next) => {
   const method = req.method;
   console.log(`Methode ${method} aangeroepen`);
