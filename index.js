@@ -3,6 +3,8 @@ require('dotenv').config()
 const app = express()
 const port = process.env.PORT;
 const userRouter = require('./src/routes/users')
+const mealRouter = require('./src/routes/meals')
+const authRouter = require('./src/routes/auth')
 const BodyParser = require('body-parser');
 
 app.use(BodyParser.json());
@@ -15,6 +17,8 @@ app.all('*', (req, res, next) => {
 });
 
 app.use('/api', userRouter);
+app.use('/api', mealRouter);
+app.use('/api', authRouter);
 // -----------------------------------------------------------
 //Cant find location
 app.all("*", (req, res) => {
