@@ -18,7 +18,7 @@ let controller = {
               connection.release();
              // Handle error after the release.
               if (error) next (error)
-              if (results && results.length === 1) {
+              if (results && results.equals("h.tank@server.com")) {
                   //There is an user with this emailAddress
                   //check if password is correct
                   console.log(results)
