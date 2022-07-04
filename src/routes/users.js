@@ -14,7 +14,7 @@ router.get('/user', userController.getUsers);
 router.get('/user/profile', authController.validateToken, userController.getUserProfile);
 
 //Get a specific user
-router.get('/user/:userId', authController.validateToken, userController.getUserById);
+router.get('/user/:userId', userController.getUserById);
 
 //delete a user
 router.delete('/user/:userId', authController.validateToken, userController.deleteUser);
