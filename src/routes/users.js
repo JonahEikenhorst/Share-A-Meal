@@ -5,10 +5,10 @@ const authController = require('../controllers/auth.controller')
 
 
 //Create a user
-router.post('/user', userController.validateUser, userController.addUser);
+router.post('/user', userController.addUser);
 
 //get all users
-router.get('/user', authController.validateToken, userController.getUsers);
+router.get('/user', userController.getUsers);
 
 //get profile
 router.get('/user/profile', authController.validateToken, userController.getUserProfile);
