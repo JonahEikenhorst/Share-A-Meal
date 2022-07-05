@@ -152,21 +152,31 @@ describe('Manage users /api/user', () => {
                 password:'Watermelon123!',
                 emailAdress:'J.Nacht@outlook.com'
             })
-            .end((err, res)=>{
-                res.should.be.an('object');
-                let {status, results} = res.body;
-                status.should.equals(201);
-                results.should.be.an('object').that.equals({
-                    firstName: 'Jan',
-                    lastName:'Nachtwacht',
-                    street:'Lombardijen',
-                    city: 'Rotterdam',
-                    password:'Watermelon123!',
-                    emailAdress:'J.Nacht@outlook.com'
-            });
-                done();
+            .end((err, res) => {
+                assert.ifError(err)
+                res.should.have.status(201)
+                res.should.be.an('object')
+
+                res.body.should.be
+                    .an('object')
+                    .that.has.all.keys('Status', 'result')
+
+                let { Status, result } = res.body
+                Status.should.be.an('number')
+                result.should.be.an('object').that.contains({
+                    id: result.id,
+                    firstName: 'acceptable',
+                    lastName: 'Test',
+                    street: 'Info',
+                    city: 'Breda',
+                    isActive: 1,
+                    emailAdress: 'new.user57@server.com',
+                    password: 'Secret!9321',
+                    phoneNumber: '06-11223344',
+                })
+                done()
             })
-        })
+    })
         it('TC-202-1 Show 0 users',(done)=>{
             chai
             .request(server)
