@@ -169,10 +169,8 @@ describe('Manage users /api/user', () => {
                     lastName: 'Nachtwacht',
                     street: 'Lombardijen',
                     city: 'Rotterdam',
-                    isActive: 1,
                     emailAdress: 'J.Nacht@outlook.com',
                     password: 'Watermelon123!',
-                    phoneNumber: '',
                 })
                 done()
             })
