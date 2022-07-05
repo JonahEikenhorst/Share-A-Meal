@@ -159,7 +159,7 @@ describe('Manage users /api/user', () => {
 
                 res.body.should.be
                     .an('object')
-                    .that.has.all.keys('Status', 'result')
+                    .that.has.all.keys('status', 'results')
 
                 let { status, results } = res.body
                 status.should.be.an('number')
