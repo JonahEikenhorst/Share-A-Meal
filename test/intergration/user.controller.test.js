@@ -156,7 +156,14 @@ describe('Manage users /api/user', () => {
                 res.should.be.an('object');
                 let {status, results} = res.body;
                 status.should.equals(201);
-                results.should.be.an('array');
+                results.should.be.an('object').that.equals({
+                    firstName: 'Jan',
+                    lastName:'Nachtwacht',
+                    street:'Lombardijen',
+                    city: 'Rotterdam',
+                    password:'Watermelon123!',
+                    emailAdress:'J.Nacht@outlook.com'
+            });
                 done();
             })
         })
