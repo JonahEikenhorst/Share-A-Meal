@@ -128,7 +128,7 @@ describe('Manage Meals /api/meal', () => {
                 })
                 .end((err, res) => {
                     assert.ifError(err)
-                    res.should.have.status(201)
+                    res.should.have.status(200)
                     res.should.be.an('object')
     
                     res.body.should.be
