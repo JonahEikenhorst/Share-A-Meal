@@ -161,18 +161,18 @@ describe('Manage users /api/user', () => {
                     .an('object')
                     .that.has.all.keys('Status', 'result')
 
-                let { Status, result } = res.body
-                Status.should.be.an('number')
-                result.should.be.an('object').that.contains({
-                    id: result.id,
-                    firstName: 'acceptable',
-                    lastName: 'Test',
-                    street: 'Info',
-                    city: 'Breda',
+                let { status, results } = res.body
+                status.should.be.an('number')
+                results.should.be.an('object').that.contains({
+                    id: results.id,
+                    firstName: 'Jan',
+                    lastName: 'Nachtwacht',
+                    street: 'Lombardijen',
+                    city: 'Rotterdam',
                     isActive: 1,
-                    emailAdress: 'new.user57@server.com',
-                    password: 'Secret!9321',
-                    phoneNumber: '06-11223344',
+                    emailAdress: 'J.Nacht@outlook.com',
+                    password: 'Watermelon123!',
+                    phoneNumber: '',
                 })
                 done()
             })
