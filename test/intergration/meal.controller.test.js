@@ -126,15 +126,34 @@ describe('Manage Meals /api/meal', () => {
                     price:12
                     
                 })
-                .end((err, res)=>{
-                    res.should.be.an('object');
-                    let {status, results} = res.body;
-                    status.should.equals(201);
-                    results.should.be.a('object').that.equals(results);
-                    done();
+                .end((err, res) => {
+                    assert.ifError(err)
+                    res.should.have.status(201)
+                    res.should.be.an('object')
+    
+                    res.body.should.be
+                        .an('object')
+                        .that.has.all.keys('status', 'results')
+    
+                    let { status, results } = res.body
+                    status.should.be.an('number')
+                    results.should.be.an('object').that.contains({
+                        id: results.id,
+                        name: 'Banana',
+                        description:'Its banana',
+                        isActive: true,
+                        isVega: true,
+                        isToTakeHome: true,
+                        dateTime:'2022-05-24T10:03:39.054Z',
+                        imageUrl:'a',
+                        allergenes:'noten',
+                        maxAmountOfParticipants:12,
+                        price:12
+                    })
+                    done()
                 })
-            })
         })
+    })
 
         it('TC-302-1 Edit meal, Missing fields ', (done) => {
             chai
