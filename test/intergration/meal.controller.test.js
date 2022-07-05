@@ -138,7 +138,7 @@ describe('Manage Meals /api/meal', () => {
                     let { status, results } = res.body
                     status.should.be.an('number')
                     results.should.be.an('object').that.contains({
-                        id: results.id,
+                        mealId: results.mealId,
                         name: 'Banana',
                         description:'Its banana',
                         isActive: true,
