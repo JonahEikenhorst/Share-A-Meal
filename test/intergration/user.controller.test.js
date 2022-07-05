@@ -160,16 +160,16 @@ describe('Manage users /api/user', () => {
                     "status": 200,
                     "results": [
                         {
-                            "id": 5,
-                            "firstName": "Henk",
-                            "lastName": "Tank",
+                            "id": 56,
+                            "firstName": "Jan",
+                            "lastName": "Nachtwacht",
                             "isActive": 1,
-                            "emailAdress": "h.tank@server.com",
-                            "password": "SeCret123!!",
+                            "emailAdress": "J.Nacht@outlook.com",
+                            "password": "Watermelon123!",
                             "phoneNumber": "06 12425495",
                             "roles": "editor,guest",
-                            "street": "",
-                            "city": ""
+                            "street": "Lombardijen",
+                            "city": "Rotterdam"
                         }
                     ]
                 }`);
